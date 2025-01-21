@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dev'Tea PWA</title>
+
+    <!-- Linking to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet" />
+
+    <!-- Linking the Manifest for PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#00ACC1" />
+    <meta name="theme-color" content="#00ACC1" />
+
+    <style>
+      /* CSS styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f1f5f8; /* Soft light background color */
+        font-family: "Nunito", sans-serif;
+        font-size: 1rem;
+      }
+
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #00acc1; /* Teal background for the nav */
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+      }
+
+      li {
+        margin-right: 1.5rem;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      li:hover {
+        color: #00acc1;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 1.5rem;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 15rem;
+        height: 18rem;
+        background: #fff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+      }
+
+      .card--avatar {
+        width: 100%;
+        height: 10rem;
+        object-fit: cover;
+      }
+
+      .card--title {
+        color: #333;
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 1.3rem;
+        margin-top: 0.8rem;
+        padding: 0 0.5rem;
+      }
+
+      .card--link {
+        text-decoration: none;
+        background: #00acc1; /* Button color */
+        color: #fff;
+        padding: 0.6rem 1.2rem;
+        border-radius: 20px;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .card--link:hover {
+        background: #008c91;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <h1>Tea World</h1>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Blog</li>
+        </ul>
+      </nav>
+      <div class="container"></div>
+    </main>
+
+    <script>
+      // JavaScript to show tea cards
+      const container = document.querySelector(".container");
+
+      const teas = [
+        { name: "Black tea", image: "images/blacktea.jpg" },
+        { name: "Green tea", image: "images/Greentea.jpg" },
+        { name: "Red tea", image: "images/Redtea.jpg" },
+        { name: "Herbal Tea", image: "images/Herbaltea.jpg" },
+        { name: "Chai Tea", image: "images/Chaitea.jpg" },
+        { name: "Boba Tea", image: "images/Bobatea.jpg" }
+      ];
+
+      const showTeas = () => {
+        let output = "";
+        teas.forEach(({ name, image }) => {
+          output += `
+            <div class="card">
+              <img class="card--avatar" src=${image} />
+              <h1 class="card--title">${name}</h1>
+              <a class="card--link" href="#">Taste</a>
+            </div>
+          `;
+        });
+        container.innerHTML = output;
+      };
+
+      document.addEventListener("DOMContentLoaded", showTeas);
+    </script>
+  </body>
+</html>
